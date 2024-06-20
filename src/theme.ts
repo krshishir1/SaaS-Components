@@ -94,26 +94,46 @@ export default createTheme({
   },
   palette: {
     primary: {
+      lightest: primaryColor['100'],
+      lighter: primaryColor['200'],
+      light: primaryColor['300'],
+      mild: primaryColor['400'],
       main: primaryColor['500'],
-      dark: primaryColor['900'],
-      light: primaryColor['100'],
-      mild: primaryColor['300'],
-      medium: primaryColor['700']
+      medium: primaryColor['600'],
+      dark: primaryColor['700'],
+      darker: primaryColor['800'],
+      darkest: primaryColor['900']
     },
     info: {
-
+      main: infoColor['500'],
+      light: infoColor['100'],
+      dark: infoColor['600']
     },
     success: {
-
+      main: successColor['500'],
+      light: successColor['100'],
+      dark: successColor['600']
     },
     error: {
-
+      main: errorColor['500'],
+      light: errorColor['100'],
+      dark: errorColor['600']
     },
     warning: {
-
+      main: warningColor['300'],
+      light: warningColor['100'],
+      dark: warningColor['400']
     },
     neutral: {
-
+      lightest: neutralColor['100'],
+      lighter: neutralColor['200'],
+      light: neutralColor['300'],
+      mild: neutralColor['400'],
+      main: neutralColor['500'],
+      medium: neutralColor['600'],
+      dark: neutralColor['700'],
+      darker: neutralColor['800'],
+      darkest: neutralColor['900']
     }
     text: {
       main: lime[50],
@@ -136,10 +156,12 @@ declare module '@mui/material/styles' {
   }
 
   interface PaletteColor {
-    main ?: String;
+    lighter ?:  String;
+    lightest ?: String;
     mild ?: String;
-    medium ?: String
-    // dark ?: String;
+    medium ?: String;
+    darker ?: String;
+    darkest ?: String;
   }
 }
 
