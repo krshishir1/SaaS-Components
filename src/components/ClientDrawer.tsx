@@ -9,6 +9,8 @@ import {
   ListItemText,
   IconButton,
   Box,
+  Typography,
+  Stack,
 } from "@mui/material";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
@@ -16,9 +18,10 @@ import MailIcon from "@mui/icons-material/Mail";
 import { DrawerProps } from "../types/ComponentProps";
 import ChevronRight from "@mui/icons-material/ChevronRight";
 
-import { neutralColor } from "../theme";
+import { ButtonWithIcon } from "./UI/Button";
+import { SidebarBtn } from "./UI/Lists";
 
-const drawerWidth = 240;
+const drawerWidth = 210;
 
 const ClientDrawer = ({ isOpen, handleClose }: DrawerProps) => {
   return (
@@ -28,8 +31,8 @@ const ClientDrawer = ({ isOpen, handleClose }: DrawerProps) => {
         flexShrink: 0,
         "& .MuiDrawer-paper": {
           width: drawerWidth,
-          bgcolor: neutralColor["700"],
-          color: neutralColor["100"]
+          bgcolor: "neutral.darker",
+          color: "neutral.lightest",
         },
       }}
       variant="persistent"
@@ -51,19 +54,20 @@ const ClientDrawer = ({ isOpen, handleClose }: DrawerProps) => {
       </Box>
       {/* <Toolbar /> */}
       <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
+
+      <Box sx={{px: 2, mt: 5}}>
+        <Stack spacing={0} direction={"column"}>
+          <SidebarBtn
+            content="Inbox"
+            icon={<InboxIcon sx={{ color: "neutral.lighter" }} />}
+          />
+          <SidebarBtn
+            content="Actions"
+            icon={<InboxIcon sx={{ color: "neutral.lighter" }} />}
+          />
+        </Stack>
+      </Box>
+      {/* <Divider />
       <List>
         {["All mail", "Trash", "Spam"].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -75,7 +79,7 @@ const ClientDrawer = ({ isOpen, handleClose }: DrawerProps) => {
             </ListItemButton>
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </Drawer>
   );
 };

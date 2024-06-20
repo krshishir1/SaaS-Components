@@ -12,8 +12,8 @@ const EntryDashboard = () => {
 
   return (
     <>
-      <Box sx={{ minHeight: "100vh", bgcolor: "primary.dark" }}>
-        {/* <ClientDrawer isOpen={drawerOpen} handleClose={() => setDrawerOpen(!drawerOpen)} /> */}
+      <Box sx={{ minHeight: "100vh", bgcolor: "neutral.darkest" }}>
+        <ClientDrawer isOpen={drawerOpen} handleClose={() => setDrawerOpen(!drawerOpen)} />
         <Container>
           <Stack direction="row" spacing={1} sx={{ width: "100%" }}>
             <ButtonWithIcon

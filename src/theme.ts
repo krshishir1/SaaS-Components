@@ -134,7 +134,7 @@ export default createTheme({
       dark: neutralColor['700'],
       darker: neutralColor['800'],
       darkest: neutralColor['900']
-    }
+    },
     text: {
       main: lime[50],
       mild: grey[200],
