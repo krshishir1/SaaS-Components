@@ -61,8 +61,8 @@ const ClientDrawer = ({ isOpen, handleClose }: DrawerProps) => {
       open={isOpen}
       onClose={() => console.log("Sidebar closed")}
     >
-      <Box sx={{ display: "flex", justifyContent: "right", m: 0 }}>
-        <IconButton
+      <Box sx={{ display: "flex", mb: 8, justifyContent: "right" }}>
+        {/* <IconButton
           size="large"
           edge="start"
           color="inherit"
@@ -71,7 +71,7 @@ const ClientDrawer = ({ isOpen, handleClose }: DrawerProps) => {
           onClick={handleClose}
         >
           <ChevronRight sx={{ width: 24 }} />
-        </IconButton>
+        </IconButton> */}
       </Box>
       {/* <Toolbar /> */}
       <Divider />
