@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Grid,
   Typography,
@@ -10,14 +12,31 @@ import {
 
 import { ImageProfileAvatar, TextProfileAvatar } from "./UI/ProfileAvatar";
 import { extractFirstLetter } from "../utils";
+import EmailPreviewDropdown from "./EmailPreviewDropdown";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 import { EmailPreviewProps } from "../types/ComponentProps";
 
 const EmailPreviewDisplay = (props: EmailPreviewProps) => {
+  const [dropdownOpen, setDropdown] = useState(false);
+  const [anchorPopperEl, setAnchorPopperEl] =
+    useState<HTMLButtonElement | null>(null);
+
+  const handleDropdown = (event: any) => {
+    console.log("manage dropdown", event.currentTarget);
+    setAnchorPopperEl(event.currentTarget);
+    setDropdown(!dropdownOpen);
+  };
+
+  const handleClickaway = (event: any) => {
+    setAnchorPopperEl(null)
+    setDropdown(false)
+  }
+
   return (
     <>
+      <EmailPreviewDropdown open={dropdownOpen} anchorEl={anchorPopperEl} handleClickaway={handleClickaway} />
       <Grid
         container
         spacing={1}
@@ -33,8 +52,8 @@ const EmailPreviewDisplay = (props: EmailPreviewProps) => {
           cursor: "pointer",
           "&:hover": {
             bgcolor: "neutral.darker",
-            borderRadius: 2
-          }
+            borderRadius: 2,
+          },
         }}
       >
         <Grid item sm={3}>
@@ -81,9 +100,7 @@ const EmailPreviewDisplay = (props: EmailPreviewProps) => {
             flexGrow: 1,
           }}
         >
-          <Typography variant="h6">
-            {props.subject}
-          </Typography>
+          <Typography variant="h6">{props.subject}</Typography>
         </Grid>
         <Grid sm={3} item>
           <Stack
@@ -95,8 +112,10 @@ const EmailPreviewDisplay = (props: EmailPreviewProps) => {
               justifyContent: "right",
             }}
           >
-            <Typography variant="small">{props.dateReceived.toDateString()}</Typography>
-            <IconButton>
+            <Typography variant="small">
+              {props.dateReceived.toDateString()}
+            </Typography>
+            <IconButton onClick={handleDropdown}>
               <MoreVertIcon sx={{ color: "neutral.light", fontSize: 17 }} />
             </IconButton>
           </Stack>

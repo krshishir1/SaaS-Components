@@ -4,7 +4,5 @@ export function extractFirstLetter(str: string) {
 
   if (matches === null) return;
 
-  console.log(matches)
-
   return matches.map((word) => word[0].toUpperCase()).join("");
 }
