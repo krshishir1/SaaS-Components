@@ -4,8 +4,7 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import ClientDrawer from "../components/ClientDrawer";
 
 import DashboardNavbar from "../components/Navbars/DashboardNavbar";
-
-import { ButtonWithIcon } from "../components/UI/Button";
+import { emailSummaries } from '../constants/sampleEmailSummary';
 
 import AdjustIcon from "@mui/icons-material/Adjust";
 import EmailPreviewDisplay from "../components/EmailPreviewDisplay";
@@ -80,7 +79,15 @@ const EntryDashboard = () => {
           </Container> */}
 
           <Container sx={{ mt: 6 }}>
-            <EmailPreviewDisplay />
+            {
+              emailSummaries.map((email) => {
+                // const {senderName, senderEmail, subject, dateReceived, profilePic, themeColor} = email;
+
+                return (
+                  <EmailPreviewDisplay {...email} />
+                )
+              })
+            }
           </Container>
         </Box>
       </Box>

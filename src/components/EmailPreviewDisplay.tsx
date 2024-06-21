@@ -1,15 +1,21 @@
-import { Grid, Typography, Box, Checkbox, Avatar, Stack, IconButton } from "@mui/material";
-import { FlexBox, FlexColumnBox } from "./UI/Container";
-import { cyan, green, grey, orange } from "@mui/material/colors";
+import {
+  Grid,
+  Typography,
+  Box,
+  Checkbox,
+  Avatar,
+  Stack,
+  IconButton,
+} from "@mui/material";
 
-import EmailTag from "./EmailTag";
+import { ImageProfileAvatar, TextProfileAvatar } from "./UI/ProfileAvatar";
+import { extractFirstLetter } from "../utils";
 
-import { ImageProfileAvatar } from "./UI/ProfileAvatar";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-import profile1 from "../assets/profile1.jpeg";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { EmailPreviewProps } from "../types/ComponentProps";
 
-const EmailPreviewDisplay = () => {
+const EmailPreviewDisplay = (props: EmailPreviewProps) => {
   return (
     <>
       <Grid
@@ -21,12 +27,17 @@ const EmailPreviewDisplay = () => {
           borderBottom: 1,
           borderColor: "neutral.dark",
           py: 2,
-          my: 2,
+          // my: 2,
           color: "neutral.lightest",
-          userSelect: "none"
+          userSelect: "none",
+          cursor: "pointer",
+          "&:hover": {
+            bgcolor: "neutral.darker",
+            borderRadius: 2
+          }
         }}
       >
-        <Grid item sm={2}>
+        <Grid item sm={3}>
           <Stack direction={"row"} spacing={1}>
             <Checkbox
               size="small"
@@ -37,14 +48,26 @@ const EmailPreviewDisplay = () => {
             />
 
             <Stack direction={"row"} spacing={0.8} alignItems={"center"}>
-              <ImageProfileAvatar src={profile1} content={"John Doe"} />
+              <Box>
+                {props.profilePic ? (
+                  <ImageProfileAvatar
+                    content={props.senderName}
+                    src={props.profilePic}
+                  />
+                ) : (
+                  <TextProfileAvatar
+                    content={extractFirstLetter(props.senderName)}
+                    themeColor={props.themeColor}
+                  />
+                )}
+              </Box>
 
               <Typography
                 variant="base"
                 color="neutral.lighter"
-                sx={{ fontWeight: "bold" }}
+                sx={{ fontWeight: "bold", flexGrow: 1 }}
               >
-                John Doe
+                {props.senderName}
               </Typography>
             </Stack>
           </Stack>
@@ -59,14 +82,22 @@ const EmailPreviewDisplay = () => {
           }}
         >
           <Typography variant="h6">
-            Welcome to our esteemed community!
+            {props.subject}
           </Typography>
         </Grid>
         <Grid sm={3} item>
-          <Stack direction={"row"} spacing={1} sx={{height: "100%", alignItems: "center", justifyContent: "right"}}>
-            <Typography variant="small">Yesterday</Typography>
+          <Stack
+            direction={"row"}
+            spacing={1}
+            sx={{
+              height: "100%",
+              alignItems: "center",
+              justifyContent: "right",
+            }}
+          >
+            <Typography variant="small">{props.dateReceived.toDateString()}</Typography>
             <IconButton>
-              <MoreVertIcon sx={{color: "neutral.light", fontSize: 17}} />
+              <MoreVertIcon sx={{ color: "neutral.light", fontSize: 17 }} />
             </IconButton>
           </Stack>
         </Grid>
