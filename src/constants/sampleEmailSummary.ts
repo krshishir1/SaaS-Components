@@ -28,5 +28,19 @@ export const emailSummaries : EmailPreviewProps[] = [
         subject: "MLH Fellowship welcomes you!",
         dateReceived: new Date(2024, 6, 19),
         themeColor: generateColor(),
-    }
+    },
+    {
+        senderName: "Shishir Kumar",
+        senderEmail: "shishir@gmail.com",
+        subject: "Important files for you",
+        dateReceived: new Date(2024, 6, 13),
+        profilePic: profile2
+    },
+    {
+        senderName: "Katy Perry",
+        senderEmail: "katypery@gmail.com",
+        subject: "Hackathon starts soon",
+        dateReceived: new Date(2024, 6, 11),
+        profilePic: profile3
+    },
 ]

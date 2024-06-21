@@ -4,10 +4,11 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import ClientDrawer from "../components/ClientDrawer";
 
 import DashboardNavbar from "../components/Navbars/DashboardNavbar";
-import { emailSummaries } from '../constants/sampleEmailSummary';
+import { emailSummaries } from "../constants/sampleEmailSummary";
 
 import AdjustIcon from "@mui/icons-material/Adjust";
 import EmailPreviewDisplay from "../components/EmailPreviewDisplay";
+import EmailPreviewHeader from "../components/utils/EmailPreviewHeader";
 
 const EntryDashboard = () => {
   const [drawerOpen, setDrawerOpen] = useState(true);
@@ -79,15 +80,14 @@ const EntryDashboard = () => {
           </Container> */}
 
           <Container sx={{ mt: 6 }}>
-            {
-              emailSummaries.map((email) => {
+            <Stack sx={{border: 1, borderColor: "neutral.dark", borderRadius: 1}}>
+              <EmailPreviewHeader />
+              {emailSummaries.map((email) => {
                 // const {senderName, senderEmail, subject, dateReceived, profilePic, themeColor} = email;
 
-                return (
-                  <EmailPreviewDisplay {...email} />
-                )
-              })
-            }
+                return <EmailPreviewDisplay {...email} />;
+              })}
+            </Stack>
           </Container>
         </Box>
       </Box>

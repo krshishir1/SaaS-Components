@@ -17,10 +17,10 @@ const DashboardNavbar = ({handleSidebar} : NavbarProps) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+          <Typography variant="h4" sx={{ flexGrow: 1, fontWeight: "bold" }}>
+            Inbox Digest
           </Typography>
-          <Button color="inherit">Login</Button>
+          {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
     </Box>
